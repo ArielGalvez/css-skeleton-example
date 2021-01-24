@@ -6,7 +6,7 @@ import { Card } from '../Card';
 import './CardList.css';
 
 const initialData = () => new Array(10).fill({});
-const DELAY = 1000;
+const EXTRA_DELAY = parseInt(process.env.REACT_APP_EXTRA_DELAY?? 1000);
 
 export const CardList = () => {
   const [data, setData] = useState(initialData());
@@ -17,7 +17,7 @@ export const CardList = () => {
       getImages().then(res => {
         setData(res);
       });
-    }, DELAY);
+    }, EXTRA_DELAY);
     return () => {
       setData([]);
     }
@@ -29,7 +29,7 @@ export const CardList = () => {
         setCount(count+1);
         setData([...data, ...res])
       });
-    }, DELAY);
+    }, EXTRA_DELAY);
   };
 
   return (
