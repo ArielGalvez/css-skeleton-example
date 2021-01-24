@@ -1,0 +1,44 @@
+.likes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 1rem;
+  transform: translateY(1rem);
+  transition: transform 0.5s ease;
+}
+.likes-count {
+  color: white;
+  font-size: 2rem;
+  padding-right: 0.5rem;
+}
+
+.heart {
+  background-color: #e94528;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 0 10px -8px 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: #e94528;
+  border-radius: 50%;
+  height: 20px;
+  position: absolute;
+  width: 20px;
+}
+
+.heart:before {
+  top: -10px;
+  left: 0;
+}
+
+.heart:after {
+  left: 10px;
+  top: 0;
+}

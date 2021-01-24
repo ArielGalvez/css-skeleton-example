@@ -1,0 +1,106 @@
+.card {
+  list-style-type: none;
+  padding: 0;
+  width: auto;
+  position: relative;
+  height: 360px;
+}
+
+.card .picture {
+  background-color: grey;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .avatar {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50px;
+  z-index: 2;
+}
+
+.card .avatar-name {
+  color: white;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 4rem;
+  z-index: 2;
+}
+
+.card:empty {
+  background-color: grey;
+  animation-name: skeleton-animation;
+  animation-duration: 1.33s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.card:empty::after {
+  position: absolute;
+  content: "";
+  bottom: 1rem;
+  left: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50px;
+  background-color:#bdc3c7;
+}
+.card:empty::before {
+  position: absolute;
+  left: 4rem;
+  bottom: 1.5rem;
+  content: "";
+  width: 130px;
+  height: 1.125rem;
+  background-color: #bdc3c7;
+}
+
+.card .card-info {
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: opacity 0.5s ease;
+  color: white;
+}
+
+.card-info p {
+  padding: 0 1rem;
+  font-size: 2rem;
+  text-align: center;
+  transform: translateY(-3rem);
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-info {
+  opacity: 1;
+}
+
+.card:hover .card-info p {
+  transform: translateY(0);
+}
+
+.card:hover .likes {
+  transform: translateY(0);
+}
+
+@keyframes skeleton-animation {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
