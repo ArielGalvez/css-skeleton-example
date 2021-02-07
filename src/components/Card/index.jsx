@@ -3,7 +3,7 @@ import React from 'react'
 import { Likes } from '../Likes';
 import './Card.css';
 
-export const Card = ({data}) => {
+export const Card = React.memo(({data}) => {
   const { urls, alt_description, user, likes, description, color } = data;
   return (
     <li className="card">
@@ -21,4 +21,4 @@ export const Card = ({data}) => {
       }
     </li>
   )
-}
+});

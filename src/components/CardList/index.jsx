@@ -5,11 +5,11 @@ import { Card } from '../Card';
 
 import './CardList.css';
 
-const initialData = () => new Array(10).fill({});
+const loaderData = () => new Array(10).fill({});
 const EXTRA_DELAY = parseInt(process.env.REACT_APP_EXTRA_DELAY?? 1000);
 
 export const CardList = () => {
-  const [data, setData] = useState(initialData());
+  const [data, setData] = useState([]);
   const [count, setCount] = useState(1);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ export const CardList = () => {
     }, EXTRA_DELAY);
     return () => {
       setData([]);
+      setCount(1);
     }
   }, [])
 
@@ -36,11 +37,12 @@ export const CardList = () => {
     <InfiniteScroll
       initialScrollY={0}
       scrollThreshold={1}
+      style={{overflow: 'hidden'}}
       className="card-list"
       dataLength={data.length}
       next={fetchImages}
       hasMore={true}
-      loader={initialData().map((card, index) => (<Card key={card.id?? index} data={card} />))}
+      loader={loaderData().map((card, index) => (<Card key={card.id?? index} data={card} />))}
     >
       {data.map((card, index) => (<Card key={card.id? `${index}-${card.id}` : index} data={card} />))}
     </InfiniteScroll>
